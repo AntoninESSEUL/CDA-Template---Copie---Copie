@@ -1,0 +1,41 @@
+:root {
+  --padding: 5px;
+}
+
+.container {
+  height: 500px;
+  width: 800px;
+  background-color: violet;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding);
+  justify-content: space-evenly;
+}
+
+.aside{
+  height: auto;
+  min-width: 100px;
+  background-color: orange;
+  flex-grow: 1;
+  padding: var(--padding);
+}
+
+.extend-bar {
+  height: auto;
+  width: 10px;
+  background-color: green;
+  cursor: ew-resize;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.aside * {
+  background-color: red;
+}
