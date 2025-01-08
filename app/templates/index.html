@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+    <link rel="stylesheet" href="static/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template</title>
-  <link rel="stylesheet" href="static/css/style.css">
-</head>
-
-<body>
-  <div class="container">
-    <aside class="aside" id="tree-view-block">
-      <button id ="hide-tree-view-btn">ToggleBar</button>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sequi ullam impedit, perspiciatis
-        consequatur deserunt architecto nisi aliquid? Explicabo, omnis recusandae eos aliquam at ipsam, sed, optio vel
-        maiores cum veniam incidunt in tempora? Et consectetur minus nostrum, rem sunt fugit maxime labore neque hic
-        praesentium animi, magni quasi quidem?</p>
-        
-    </aside>
-    <div class="extend-bar" id="tree-view-block">
+  <body>
+    <div class="container">
+      <aside class="aside" id="tree-view-block">
+        <div class="context-bar">
+          <button id="hide-tree-view-btn">Hide Tree View</button>
+          <h2>Files</h2>
+        </div>
+        <li>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </li>
+      </aside>
+      <div class="slider" id="tree-view-slider"></div>
+      <aside class="aside">
+        <div class="context-bar">
+          <button id="show-tree-view-btn" class="hide">Show Tree View</button>
+          <h2>This is the context-bar</h2>
+        </div>
+        <p>2</p>
+      </aside>
     </div>
-    <aside class="aside">
-      <button id ="show-tree-view-btn" class="show">ToggleBar</button>
-      <p>2</p>
-    </aside>
-  </div>
-  <script src="static/js/app.js"></script>
-</body>
-
+    <script src="static/js/app.js"></script>
+  </body>
 </html>

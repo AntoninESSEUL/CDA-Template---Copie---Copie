@@ -1,79 +1,37 @@
-const sidebar = document.getElementById('sidebar');
+const showTreeViewBtn = document.getElementById("show-tree-view-btn");
+const hideTreeViewBtn = document.getElementById("hide-tree-view-btn");
+const treeViewBlock = document.getElementById("tree-view-block");
+const slider = document.getElementById("tree-view-slider");
 
-function toggleSidebar() {
-  const isExpanded = sidebar.classList.toggle("show-sidebar");
-  sidebar.setAttribute("aria-hidden", !isExpanded);
-  const button = document.querySelector('button[onclick="toggleSidebar()"]');
-  button.setAttribute("aria-expanded", isExpanded);
-}
-
-
-
-
-const showTreeViewBtn = document.getElementById('show-tree-view-btn');
-const hideTreeViewBtn = document.getElementById('hide-tree-view-btn');
-const treeViewBlock = document.getElementById('tree-view-block');
-
+//TREE VIEW
 function toggleTreeView() {
-  treeViewBlock.classList.toggle('show');
-  showTreeViewBtn.classList.toggle('hide');
+  treeViewBlock.classList.toggle("hide");
+  slider.classList.toggle("hide");
+  showTreeViewBtn.classList.toggle("hide");
 }
 
-showTreeViewBtn.addEventListener('click', toggleTreeView);
-hideTreeViewBtn.addEventListener('click', toggleTreeView);
+showTreeViewBtn.addEventListener("click", toggleTreeView);
+hideTreeViewBtn.addEventListener("click", toggleTreeView);
 
-
-
-
-
-
-
-
-
-
-
-
-
-const treeView = document.getElementById('tree-view');
-const resizer = document.querySelector('.resizable');
-const mainContent = document.getElementById('main-content');
-const main = document.querySelector('main');
-
+// RESIZER
+const leftAside = document.getElementById("tree-view-block");
+const rightAside = document.querySelectorAll(".aside")[1];
 let isResizing = false;
 
-// Définir les limites
-const minWidth = 256; // Largeur minimale en pixels
-const maxWidth = 908; // Largeur maximale en pixels
-
-resizer.addEventListener('mousedown', (e) => {
+slider.addEventListener("mousedown", (e) => {
   isResizing = true;
-  document.body.style.cursor = 'ew-resize';
+  document.body.style.cursor = "ew-resize";
 });
 
-document.addEventListener('mousemove', (e) => {
+document.addEventListener("mousemove", (e) => {
   if (!isResizing) return;
-
-  // Calculer la largeur de #tree-view en fonction de la position du curseur
-  let newWidth = e.clientX;
-
-  // Limiter la largeur entre minWidth et maxWidth
-  if (newWidth < minWidth) {
-    newWidth = minWidth;
-  } else if (newWidth > maxWidth) {
-    newWidth = maxWidth;
-  }
-
-  // Mettre à jour la largeur de #tree-view et ajuster grid-template-columns
-  treeView.style.width = `${newWidth}px`;
-
-  // Ajuster grid-template-columns sur main pour que la mise en page soit réactive
-  main.style.gridTemplateColumns = `${newWidth}px 1fr`;
+  leftAside.style.width = `${e.clientX}px`;
+  rightAside.style.width = `calc(100% - ${e.clientX + slider.offsetWidth}px)`;
 });
 
-document.addEventListener('mouseup', () => {
+document.addEventListener("mouseup", () => {
   if (isResizing) {
     isResizing = false;
-    document.body.style.cursor = 'default';
+    document.body.style.cursor = "default";
   }
 });
-
